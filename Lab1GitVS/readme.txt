@@ -1,0 +1,1 @@
+Version 1.0 created: 01.04.2026
