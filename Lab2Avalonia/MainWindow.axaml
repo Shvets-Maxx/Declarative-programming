@@ -1,0 +1,74 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Lab2Avalonia.MainWindow"
+        Title="TextEditor (Avalonia)" Width="700" Height="450">
+  <Window.Background>
+    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+      <GradientStop Color="#FF1E3C72" Offset="0.0"/>
+      <GradientStop Color="#FF2A5298" Offset="0.5"/>
+      <GradientStop Color="#FF4B79A1" Offset="1.0"/>
+    </LinearGradientBrush>
+  </Window.Background>
+  <Window.Styles>
+    <Style Selector="Button">
+      <Setter Property="Margin" Value="5"/>
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="BorderBrush" Value="White"/>
+    </Style>
+  </Window.Styles>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition/>
+    </Grid.RowDefinitions>
+
+    <Border Grid.Row="0"
+            BorderBrush="#FFCBBEBE"
+            BorderThickness="2"
+            CornerRadius="10"
+            Margin="5">
+      <StackPanel Orientation="Horizontal">
+        <Button x:Name="BtnOpen" Content="Відкрити"/>
+        <Button x:Name="BtnClear" Content="Стерти"/>
+        <Button x:Name="BtnCopy" Content="Копіювати"/>
+        <Button x:Name="BtnPaste" Content="Вставити"/>
+      </StackPanel>
+    </Border>
+
+    <Border Grid.Row="1"
+            BorderBrush="#FFCBBEBE"
+            BorderThickness="2"
+            CornerRadius="10"
+            Margin="5">
+      <Grid Margin="10">
+        <Grid.RowDefinitions>
+          <RowDefinition/>
+          <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBox x:Name="TxtDocument"
+                 Grid.Row="0"
+                 Margin="5"
+                 AcceptsReturn="True"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 FontSize="{Binding Value, ElementName=FontSlider}"/>
+
+        <DockPanel Grid.Row="1" LastChildFill="False">
+          <TextBlock Text="Розмір шрифту:" Margin="4" VerticalAlignment="Center" DockPanel.Dock="Left"/>
+          <Slider x:Name="FontSlider"
+                  Margin="4"
+                  MinWidth="100"
+                  Minimum="12"
+                  Maximum="40"
+                  Value="14"
+                  DockPanel.Dock="Left"/>
+          <Button x:Name="BtnOk"
+                  Content="OK"
+                  Margin="5"
+                  DockPanel.Dock="Right"/>
+        </DockPanel>
+      </Grid>
+    </Border>
+  </Grid>
+</Window>
